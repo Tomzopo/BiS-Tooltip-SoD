@@ -7,12 +7,10 @@ local icon_name = "BisTooltipIcon"
 
 local sources = {
     wh = "wh",
-    wowtbc = "wowtbc"
 }
 
 Bistooltip_source_to_url = {
-    ["wh"] = "wowhead.com/wotlk",
-    ["wowtbc"] = "wowtbc.gg/wotlk"
+    ["wh"] = "https://www.wowhead.com/classic",
 }
 
 local db_defaults = {
@@ -144,7 +142,6 @@ local configTable = {
                     BistooltipAddon.db.char.highlight_spec = {
                     }
                 end
-
             end,
             get = function(info, key)
                 return BistooltipAddon.db.char.highlight_spec.key == key
@@ -207,7 +204,7 @@ end
 
 local function migrateAddonDB()
     if not BistooltipAddon.db.char["version"] then
-        BistooltipAddon.db.char.version = 6.1
+        BistooltipAddon.db.char.version = 0.0
         BistooltipAddon.db.char.highlight_spec = {}
         BistooltipAddon.db.char.filter_specs = {}
         BistooltipAddon.db.char.class_index = 1
@@ -218,12 +215,12 @@ local function migrateAddonDB()
         BistooltipAddon.db.char.data_source = sources.wh
         openSourceSelectDialog()
     end
-    if BistooltipAddon.db.char.version == 6.1 then
+    --[[ if BistooltipAddon.db.char.version == 6.1 then
         BistooltipAddon.db.char.version = 6.2
         if BistooltipAddon.db.char.filter_specs["Death knight"] and BistooltipAddon.db.char.filter_specs["Death knight"]["Blood dps"] == nil then
             BistooltipAddon.db.char.filter_specs["Death knight"]["Blood dps"] = true
         end
-    end
+    end ]]
 end
 
 local config_shown = false
@@ -238,18 +235,10 @@ function BistooltipAddon:openConfigDialog()
 end
 
 local function enableSpec(spec_name)
-
-    if spec_name == sources.wowtbc then
-        Bistooltip_bislists = Bistooltip_wowtbc_bislists;
-        Bistooltip_items = Bistooltip_wowtbc_items;
-        Bistooltip_classes = Bistooltip_wowtbc_classes;
-        Bistooltip_phases = Bistooltip_wowtbc_phases;
-    elseif spec_name == sources.wh then
-        Bistooltip_bislists = Bistooltip_wh_bislists;
-        Bistooltip_items = Bistooltip_wh_items;
-        Bistooltip_classes = Bistooltip_wh_classes;
-        Bistooltip_phases = Bistooltip_wh_phases;
-    end
+    Bistooltip_bislists = Bistooltip_wh_bislists;
+    Bistooltip_items = Bistooltip_wh_items;
+    Bistooltip_classes = Bistooltip_wh_classes;
+    Bistooltip_phases = Bistooltip_wh_phases;
     Bistooltip_phases_string = ""
     for i, phase in ipairs(Bistooltip_phases) do
         if i ~= 1 then
@@ -303,13 +292,12 @@ function BistooltipAddon:changeSpec(spec_name)
 end
 
 function BistooltipAddon:initConfig()
-
     BistooltipAddon.db = LibStub("AceDB-3.0"):New("BisTooltipDB", db_defaults, true)
 
     LibStub("AceConfig-3.0"):RegisterOptionsTable(BistooltipAddon.AceAddonName, configTable)
     AceConfigDialog:AddToBlizOptions(BistooltipAddon.AceAddonName, BistooltipAddon.AceAddonName)
 
-    migrateAddonDB()
+    -- migrateAddonDB()
 
     Bistooltip_bislists = {};
     Bistooltip_items = {};

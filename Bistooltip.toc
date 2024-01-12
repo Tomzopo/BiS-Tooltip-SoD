@@ -3,7 +3,8 @@
 ## Notes: v7.40. In game BiS lists and item tooltip enrichment.
 ## Author: Hellixoid
 ## Author: Dweem
-## Version: 7.40
+## Author: Tomzopo	
+## Version: 0.1.0
 ## SavedVariables: BisTooltipDB
 ## OptionalDeps:
 
@@ -20,8 +21,6 @@ lib\Ace3\AceAddon-3.0\AceAddon-3.0.xml
 lib\Ace3\AceConfig-3.0\AceConfig-3.0.xml
 
 Bistooltip_classes.lua
-Bistooltip_wowtbc_items.lua
-Bistooltip_wowtbc_bislists.lua
 Bistooltip_wh_items.lua
 Bistooltip_wh_bislists.lua
 Bistooltip_horde_to_ali.lua
