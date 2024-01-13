@@ -3,8 +3,8 @@ local eventFrame = CreateFrame("Frame", nil, UIParent)
 Bistooltip_phases_string = ""
 
 local function specHighlighted(class_name, spec_name)
-    return (BistooltipAddon.db.char.highlight_spec.spec_name == spec_name
-            and BistooltipAddon.db.char.highlight_spec.class_name == class_name)
+    return (BiSTooltip.db.char.highlight_spec.spec_name == spec_name
+            and BiSTooltip.db.char.highlight_spec.class_name == class_name)
 end
 
 local function specFiltered(class_name, spec_name)
@@ -14,14 +14,14 @@ local function specFiltered(class_name, spec_name)
     if IsAltKeyDown() then
         return false
     end
-    if BistooltipAddon.db.char.filter_specs[class_name] then
-        return not BistooltipAddon.db.char.filter_specs[class_name][spec_name]
+    if BiSTooltip.db.char.filter_specs[class_name] then
+        return not BiSTooltip.db.char.filter_specs[class_name][spec_name]
     end
     return false
 end
 
 local function classNamesFiltered()
-    if BistooltipAddon.db.char.filter_class_names then
+    if BiSTooltip.db.char.filter_class_names then
         return true
     end
 end
@@ -43,7 +43,7 @@ local function printSpecLine(tooltip, slot, class_name, spec_name)
     local slot_name = slot.name
     local slot_ranks = slot.ranks
     local prefix = "   "
-    if BistooltipAddon.db.char.filter_class_names then
+    if BiSTooltip.db.char.filter_class_names then
         prefix = ""
     end
     local left_text = prefix .. "|T" .. Bistooltip_spec_icons[class_name][spec_name] .. ":14|t " .. spec_name
@@ -70,7 +70,7 @@ local function printClassName(tooltip, class_name)
 end
 
 local function OnGameTooltipSetItem(tooltip)
-    if BistooltipAddon.db.char.tooltip_with_ctrl and not IsControlKeyDown() then
+    if BiSTooltip.db.char.tooltip_with_ctrl and not IsControlKeyDown() then
         return
     end
     local _, link = tooltip:GetItem();
@@ -124,7 +124,7 @@ local function OnGameTooltipSetItem(tooltip)
     end
 end
 
-function BistooltipAddon:initBisTooltip()
+function BiSTooltip:initBisTooltip()
     LibExtraTip:AddCallback({ type = "item", callback = OnGameTooltipSetItem, allevents = true })
     LibExtraTip:RegisterTooltip(GameTooltip);
     LibExtraTip:RegisterTooltip(ItemRefTooltip);

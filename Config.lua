@@ -35,19 +35,19 @@ local configTable = {
             desc = "Shows/hides minimap icon",
             type = "toggle",
             set = function(info, val)
-                BistooltipAddon.db.char.minimap_icon = val
+                BiSTooltip.db.char.minimap_icon = val
                 if val == true then
                     if icon_loaded == true then
                         LDBIcon:Show(icon_name)
                     else
-                        BistooltipAddon:addMapIcon()
+                        BiSTooltip:addMapIcon()
                     end
                 else
                     LDBIcon:Hide(icon_name)
                 end
             end,
             get = function(info)
-                return BistooltipAddon.db.char.minimap_icon
+                return BiSTooltip.db.char.minimap_icon
             end
         },
         filter_class_names = {
@@ -56,10 +56,10 @@ local configTable = {
             desc = "Removes class name separators from item tooltips",
             type = "toggle",
             set = function(info, val)
-                BistooltipAddon.db.char.filter_class_names = val
+                BiSTooltip.db.char.filter_class_names = val
             end,
             get = function(info)
-                return BistooltipAddon.db.char.filter_class_names
+                return BiSTooltip.db.char.filter_class_names
             end
         },
         tooltip_with_ctrl = {
@@ -69,10 +69,10 @@ local configTable = {
             type = "toggle",
             width = "double",
             set = function(info, val)
-                BistooltipAddon.db.char.tooltip_with_ctrl = val
+                BiSTooltip.db.char.tooltip_with_ctrl = val
             end,
             get = function(info)
-                return BistooltipAddon.db.char.tooltip_with_ctrl
+                return BiSTooltip.db.char.tooltip_with_ctrl
             end
         },
         data_source = {
@@ -84,11 +84,11 @@ local configTable = {
             width = "double",
             values = Bistooltip_source_to_url,
             set = function(info, key, val)
-                BistooltipAddon.db.char.data_source = key
-                BistooltipAddon:changeSpec(key)
+                BiSTooltip.db.char.data_source = key
+                BiSTooltip:changeSpec(key)
             end,
             get = function(info, key)
-                return BistooltipAddon.db.char.data_source
+                return BiSTooltip.db.char.data_source
             end
         },
         filter_specs = {
@@ -103,7 +103,7 @@ local configTable = {
                 si = tonumber(si)
                 local class_name = Bistooltip_classes[ci].name
                 local spec_name = Bistooltip_classes[ci].specs[si]
-                BistooltipAddon.db.char.filter_specs[class_name][spec_name] = val
+                BiSTooltip.db.char.filter_specs[class_name][spec_name] = val
             end,
             get = function(info, key)
                 local ci, si = strsplit(":", key)
@@ -111,13 +111,13 @@ local configTable = {
                 si = tonumber(si)
                 local class_name = Bistooltip_classes[ci].name
                 local spec_name = Bistooltip_classes[ci].specs[si]
-                if (not BistooltipAddon.db.char.filter_specs[class_name]) then
-                    BistooltipAddon.db.char.filter_specs[class_name] = {}
+                if (not BiSTooltip.db.char.filter_specs[class_name]) then
+                    BiSTooltip.db.char.filter_specs[class_name] = {}
                 end
-                if (BistooltipAddon.db.char.filter_specs[class_name][spec_name] == nil) then
-                    BistooltipAddon.db.char.filter_specs[class_name][spec_name] = true
+                if (BiSTooltip.db.char.filter_specs[class_name][spec_name] == nil) then
+                    BiSTooltip.db.char.filter_specs[class_name][spec_name] = true
                 end
-                return BistooltipAddon.db.char.filter_specs[class_name][spec_name]
+                return BiSTooltip.db.char.filter_specs[class_name][spec_name]
             end
         },
         highlight_spec = {
@@ -133,18 +133,18 @@ local configTable = {
                     si = tonumber(si)
                     local class_name = Bistooltip_classes[ci].name
                     local spec_name = Bistooltip_classes[ci].specs[si]
-                    BistooltipAddon.db.char.highlight_spec = {
+                    BiSTooltip.db.char.highlight_spec = {
                         key = key,
                         class_name = class_name,
                         spec_name = spec_name
                     }
                 else
-                    BistooltipAddon.db.char.highlight_spec = {
+                    BiSTooltip.db.char.highlight_spec = {
                     }
                 end
             end,
             get = function(info, key)
-                return BistooltipAddon.db.char.highlight_spec.key == key
+                return BiSTooltip.db.char.highlight_spec.key == key
             end
         }
     }
@@ -173,7 +173,7 @@ local function openSourceSelectDialog()
         frame = nil
     end)
     frame:SetLayout("List")
-    frame:SetTitle(BistooltipAddon.AddonNameAndVersion)
+    frame:SetTitle(BiSTooltip.AddonNameAndVersion)
 
     local labelEmpty = AceGUI:Create("Label")
     labelEmpty:SetFont("Fonts\\FRIZQT__.TTF", 14, "")
@@ -193,43 +193,43 @@ local function openSourceSelectDialog()
 
     local sourceDropdown = AceGUI:Create("Dropdown")
     sourceDropdown:SetCallback("OnValueChanged", function(_, _, key)
-        BistooltipAddon.db.char.data_source = key
-        BistooltipAddon:changeSpec(key)
+        BiSTooltip.db.char.data_source = key
+        BiSTooltip:changeSpec(key)
     end)
     sourceDropdown:SetRelativeWidth(1)
     sourceDropdown:SetList(Bistooltip_source_to_url)
-    sourceDropdown:SetValue(BistooltipAddon.db.char["data_source"])
+    sourceDropdown:SetValue(BiSTooltip.db.char["data_source"])
     frame:AddChild(sourceDropdown)
 end
 
 local function migrateAddonDB()
-    if not BistooltipAddon.db.char["version"] then
-        BistooltipAddon.db.char.version = 0.0
-        BistooltipAddon.db.char.highlight_spec = {}
-        BistooltipAddon.db.char.filter_specs = {}
-        BistooltipAddon.db.char.class_index = 1
-        BistooltipAddon.db.char.spec_index = 1
-        BistooltipAddon.db.char.phase_index = 1
+    if not BiSTooltip.db.char["version"] then
+        BiSTooltip.db.char.version = 0.0
+        BiSTooltip.db.char.highlight_spec = {}
+        BiSTooltip.db.char.filter_specs = {}
+        BiSTooltip.db.char.class_index = 1
+        BiSTooltip.db.char.spec_index = 1
+        BiSTooltip.db.char.phase_index = 1
     end
-    if BistooltipAddon.db.char["data_source"] == nil then
-        BistooltipAddon.db.char.data_source = sources.wh
+    if BiSTooltip.db.char["data_source"] == nil then
+        BiSTooltip.db.char.data_source = sources.wh
         openSourceSelectDialog()
     end
-    --[[ if BistooltipAddon.db.char.version == 6.1 then
-        BistooltipAddon.db.char.version = 6.2
-        if BistooltipAddon.db.char.filter_specs["Death knight"] and BistooltipAddon.db.char.filter_specs["Death knight"]["Blood dps"] == nil then
-            BistooltipAddon.db.char.filter_specs["Death knight"]["Blood dps"] = true
+    --[[ if BiSTooltip.db.char.version == 6.1 then
+        BiSTooltip.db.char.version = 6.2
+        if BiSTooltip.db.char.filter_specs["Death knight"] and BiSTooltip.db.char.filter_specs["Death knight"]["Blood dps"] == nil then
+            BiSTooltip.db.char.filter_specs["Death knight"]["Blood dps"] = true
         end
     end ]]
 end
 
 local config_shown = false
-function BistooltipAddon:openConfigDialog()
+function BiSTooltip:openConfigDialog()
     if config_shown then
         InterfaceOptionsFrame_Show()
     else
-        InterfaceOptionsFrame_OpenToCategory(BistooltipAddon.AceAddonName)
-        InterfaceOptionsFrame_OpenToCategory(BistooltipAddon.AceAddonName)
+        InterfaceOptionsFrame_OpenToCategory(BiSTooltip.AceAddonName)
+        InterfaceOptionsFrame_OpenToCategory(BiSTooltip.AceAddonName)
     end
     config_shown = not (config_shown)
 end
@@ -250,8 +250,8 @@ local function enableSpec(spec_name)
     buildFilterSpecOptions()
 end
 
-function BistooltipAddon:addMapIcon()
-    if BistooltipAddon.db.char.minimap_icon then
+function BiSTooltip:addMapIcon()
+    if BiSTooltip.db.char.minimap_icon then
         icon_loaded = true
         local LDB = LibStub("LibDataBroker-1.1", true)
         local LDBIcon = LDB and LibStub("LibDBIcon-1.0", true)
@@ -262,45 +262,45 @@ function BistooltipAddon:addMapIcon()
                 icon = "interface/icons/inv_staff_medivh.blp",
                 OnClick = function(_, button)
                     if button == "LeftButton" then
-                        BistooltipAddon:createMainFrame()
+                        BiSTooltip:createMainFrame()
                     end
                     if button == "RightButton" then
-                        BistooltipAddon:openConfigDialog()
+                        BiSTooltip:openConfigDialog()
                     end
                 end,
                 OnTooltipShow = function(tt)
-                    tt:AddLine(BistooltipAddon.AddonNameAndVersion)
+                    tt:AddLine(BiSTooltip.AddonNameAndVersion)
                     tt:AddLine("|cffffff00Left click|r to open the BiS lists window")
                     tt:AddLine("|cffffff00Right click|r to open addon configuration window")
                 end,
             })
             if LDBIcon then
-                LDBIcon:Register(icon_name, PC_MinimapBtn, BistooltipAddon.db.char)
+                LDBIcon:Register(icon_name, PC_MinimapBtn, BiSTooltip.db.char)
             end
         end
     end
 end
 
-function BistooltipAddon:changeSpec(spec_name)
-    BistooltipAddon.db.char.class_index = 1
-    BistooltipAddon.db.char.spec_index = 1
-    BistooltipAddon.db.char.phase_index = 1
+function BiSTooltip:changeSpec(spec_name)
+    BiSTooltip.db.char.class_index = 1
+    BiSTooltip.db.char.spec_index = 1
+    BiSTooltip.db.char.phase_index = 1
     enableSpec(spec_name)
 
-    BistooltipAddon:initBislists()
-    BistooltipAddon:reloadData()
+    BiSTooltip:initBislists()
+    BiSTooltip:reloadData()
 end
 
-function BistooltipAddon:initConfig()
-    BistooltipAddon.db = LibStub("AceDB-3.0"):New("BisTooltipDB", db_defaults, true)
+function BiSTooltip:initConfig()
+    BiSTooltip.db = LibStub("AceDB-3.0"):New("BisTooltipDB", db_defaults, true)
 
-    LibStub("AceConfig-3.0"):RegisterOptionsTable(BistooltipAddon.AceAddonName, configTable)
-    AceConfigDialog:AddToBlizOptions(BistooltipAddon.AceAddonName, BistooltipAddon.AceAddonName)
+    LibStub("AceConfig-3.0"):RegisterOptionsTable(BiSTooltip.AceAddonName, configTable)
+    AceConfigDialog:AddToBlizOptions(BiSTooltip.AceAddonName, BiSTooltip.AceAddonName)
 
     -- migrateAddonDB()
 
     Bistooltip_bislists = {};
     Bistooltip_items = {};
 
-    enableSpec(BistooltipAddon.db.char["data_source"])
+    enableSpec(BiSTooltip.db.char["data_source"])
 end

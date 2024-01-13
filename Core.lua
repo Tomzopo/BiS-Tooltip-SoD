@@ -1,4 +1,4 @@
-BistooltipAddon = LibStub("AceAddon-3.0"):NewAddon("Bis-Tooltip")
+BiSTooltip = LibStub("AceAddon-3.0"):NewAddon("Bis-Tooltip")
 --local AceAddon =
 
 Bistooltip_char_equipment = {}
@@ -37,12 +37,12 @@ local function createEquipmentWatcher()
     end)
 end
 
-function BistooltipAddon:OnInitialize()
+function BiSTooltip:OnInitialize()
     createEquipmentWatcher()
-    BistooltipAddon.AceAddonName = "Bis-Tooltip"
-    BistooltipAddon.AddonNameAndVersion = "Bis-Tooltip v1.0.0"
-    BistooltipAddon:initConfig()
-    BistooltipAddon:addMapIcon()
-    BistooltipAddon:initBislists()
-    BistooltipAddon:initBisTooltip()
+    BiSTooltip.AceAddonName = "Bis-Tooltip"
+    BiSTooltip.AddonNameAndVersion = "Bis-Tooltip v1.0.1"
+    BiSTooltip:initConfig()
+    BiSTooltip:addMapIcon()
+    BiSTooltip:initBislists()
+    BiSTooltip:initBisTooltip()
 end

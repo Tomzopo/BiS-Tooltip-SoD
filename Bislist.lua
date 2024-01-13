@@ -44,7 +44,7 @@ local function createItemFrame(item_id, size, with_checkmark)
                 checkMark:SetWidth(32)
                 checkMark:SetHeight(32)
                 checkMark:SetPoint("CENTER", 6, -8)
-                checkMark:SetTexture("Interface\\AddOns\\Bistooltip\\checkmark-16.tga")
+                checkMark:SetTexture("Interface\\AddOns\\BisTooltip\\checkmark-16.tga")
                 table.insert(checkmarks, checkMark)
             end
 
@@ -177,9 +177,9 @@ local function drawTableHeader(frame)
 end
 
 local function saveData()
-    BistooltipAddon.db.char.class_index = class_index
-    BistooltipAddon.db.char.spec_index = spec_index
-    BistooltipAddon.db.char.phase_index = phase_index
+    BiSTooltip.db.char.class_index = class_index
+    BiSTooltip.db.char.spec_index = spec_index
+    BiSTooltip.db.char.phase_index = phase_index
 end
 
 local function clearCheckMarks()
@@ -233,9 +233,9 @@ local function buildSpecsDict(class_i)
 end
 
 local function loadData()
-    class_index = BistooltipAddon.db.char.class_index
-    spec_index = BistooltipAddon.db.char.spec_index
-    phase_index = BistooltipAddon.db.char.phase_index
+    class_index = BiSTooltip.db.char.class_index
+    spec_index = BiSTooltip.db.char.spec_index
+    phase_index = BiSTooltip.db.char.phase_index
     if class_index then
         class = class_options_to_class[class_options[class_index]].name
         buildSpecsDict(class_index)
@@ -334,11 +334,11 @@ local function createSpecFrame()
     spec_frame = frame
 end
 
-function BistooltipAddon:reloadData()
+function BiSTooltip:reloadData()
     buildClassDict()
-    class_index = BistooltipAddon.db.char.class_index
-    spec_index = BistooltipAddon.db.char.spec_index
-    phase_index = BistooltipAddon.db.char.phase_index
+    class_index = BiSTooltip.db.char.class_index
+    spec_index = BiSTooltip.db.char.spec_index
+    phase_index = BiSTooltip.db.char.phase_index
 
     class = class_options_to_class[class_options[class_index]].name
     buildSpecsDict(class_index)
@@ -355,13 +355,13 @@ function BistooltipAddon:reloadData()
         phaseDropDown:SetValue(phase_index)
 
         drawSpecData()
-        main_frame:SetStatusText(Bistooltip_source_to_url[BistooltipAddon.db.char["data_source"]])
+        main_frame:SetStatusText(Bistooltip_source_to_url[BiSTooltip.db.char["data_source"]])
     end
 end
 
-function BistooltipAddon:createMainFrame()
+function BiSTooltip:createMainFrame()
     if main_frame then
-        BistooltipAddon:closeMainFrame()
+        BiSTooltip:closeMainFrame()
         return
     end
     main_frame = AceGUI:Create("Frame")
@@ -370,7 +370,7 @@ function BistooltipAddon:createMainFrame()
 
     --main_frame.frame:SetScript("OnKeyDown", function(self, key)
     --    if key == "ESCAPE" then
-    --        BistooltipAddon:closeMainFrame()
+    --        BiSTooltip:closeMainFrame()
     --    end
     --end)
     --main_frame.frame:SetPropagateKeyboardInput(false)
@@ -385,14 +385,14 @@ function BistooltipAddon:createMainFrame()
         main_frame = nil
     end)
     main_frame:SetLayout("List")
-    main_frame:SetTitle(BistooltipAddon.AddonNameAndVersion)
-    main_frame:SetStatusText(Bistooltip_source_to_url[BistooltipAddon.db.char["data_source"]])
+    main_frame:SetTitle(BiSTooltip.AddonNameAndVersion)
+    main_frame:SetStatusText(Bistooltip_source_to_url[BiSTooltip.db.char["data_source"]])
     drawDropdowns()
     createSpecFrame()
     drawSpecData()
 end
 
-function BistooltipAddon:closeMainFrame()
+function BiSTooltip:closeMainFrame()
     if main_frame then
         AceGUI:Release(main_frame)
         classDropdown = nil
@@ -402,10 +402,10 @@ function BistooltipAddon:closeMainFrame()
     end
 end
 
-function BistooltipAddon:initBislists()
+function BiSTooltip:initBislists()
     buildClassDict()
     loadData()
     LibStub("AceConsole-3.0"):RegisterChatCommand("bistooltip", function()
-        BistooltipAddon:createMainFrame()
+        BiSTooltip:createMainFrame()
     end, persist)
 end
