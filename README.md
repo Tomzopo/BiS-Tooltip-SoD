@@ -1,8 +1,7 @@
-# Season of Discovery Bistooltip
+# BiS Tooltip Season of Discovery
+In game interface showing wowhead.com/classic BiS lists for every class and spec
 
-
-
-# TODO
-- [ ] Enchantments (Enchants, Armor Kits, etc.)
-- [ ] Horde/Alliance Conversion Items
-- [ ] Item tooltips
+# Features still in development
+- Enchantments (Enchants, Armor Kits, etc.)
+- Horde/Alliance Conversion Items
+- Item tooltips

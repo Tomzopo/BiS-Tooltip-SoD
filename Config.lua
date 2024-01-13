@@ -259,7 +259,7 @@ function BistooltipAddon:addMapIcon()
             local PC_MinimapBtn = LDB:NewDataObject(icon_name, {
                 type = "launcher",
                 text = icon_name,
-                icon = "interface/icons/inv_weapon_glave_01.blp",
+                icon = "interface/icons/inv_staff_medivh.blp",
                 OnClick = function(_, button)
                     if button == "LeftButton" then
                         BistooltipAddon:createMainFrame()
