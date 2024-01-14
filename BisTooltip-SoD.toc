@@ -1,10 +1,10 @@
 ## Interface: 11500
 ## Title: BiSTooltip-SoD
-## Notes: v1.0.0 In game BiS lists.
+## Notes: v1.0.2 In game BiS lists.
 ## Author: Hellixoid
 ## Author: Dweem
 ## Author: Tomzopo	
-## Version: 1.0.1
+## Version: 1.0.2
 ## SavedVariables: BisTooltipDB
 ## OptionalDeps:
 
@@ -20,11 +20,11 @@ lib\Ace3\AceConsole-3.0\AceConsole-3.0.xml
 lib\Ace3\AceAddon-3.0\AceAddon-3.0.xml
 lib\Ace3\AceConfig-3.0\AceConfig-3.0.xml
 
-Bistooltip_classes.lua
-Bistooltip_wh_items.lua
-Bistooltip_wh_bislists.lua
-Bistooltip_horde_to_ali.lua
+BisTooltip_classes.lua
+BisTooltip_wh_items.lua
+BisTooltip_wh_bislists.lua
+BisTooltip_horde_to_ali.lua
 Core.lua
 Config.lua
-Bistooltip.lua
+BisTooltip.lua
 Bislist.lua
