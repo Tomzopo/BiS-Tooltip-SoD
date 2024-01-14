@@ -154,7 +154,7 @@ local function buildFilterSpecOptions()
     local filter_specs_options = {}
     for ci, class in ipairs(Bistooltip_classes) do
         for si, spec in ipairs(Bistooltip_classes[ci].specs) do
-            local option_val = "|T" .. Bistooltip_spec_icons[class.name][spec] .. ":16|t " .. class.name .. " " .. spec
+            local option_val = "|T" .. Spec_Icons[class.name][spec] .. ":16|t " .. class.name .. " " .. spec
             local option_key = ci .. ":" .. si
             filter_specs_options[option_key] = option_val
         end
@@ -235,10 +235,10 @@ function BiSTooltip:openConfigDialog()
 end
 
 local function enableSpec(spec_name)
-    Bistooltip_bislists = Bistooltip_wh_bislists;
+    Bistooltip_bislists = BisTooltip_Bis_Lists;
     Bistooltip_items = Bistooltip_wh_items;
-    Bistooltip_classes = Bistooltip_wh_classes;
-    Bistooltip_phases = Bistooltip_wh_phases;
+    Bistooltip_classes = BisTooltip_Classes;
+    Bistooltip_phases = BisTooltip_Phases;
     Bistooltip_phases_string = ""
     for i, phase in ipairs(Bistooltip_phases) do
         if i ~= 1 then
