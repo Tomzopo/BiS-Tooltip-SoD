@@ -355,7 +355,7 @@ function BiSTooltip:reloadData()
         phaseDropDown:SetValue(phase_index)
 
         drawSpecData()
-        main_frame:SetStatusText(Bistooltip_source_to_url[BiSTooltip.db.char["data_source"]])
+        main_frame:SetStatusText(BisTooltip_Source_To_URL[BiSTooltip.db.char["data_source"]])
     end
 end
 
@@ -386,7 +386,7 @@ function BiSTooltip:createMainFrame()
     end)
     main_frame:SetLayout("List")
     main_frame:SetTitle(BiSTooltip.AddonNameAndVersion)
-    main_frame:SetStatusText(Bistooltip_source_to_url[BiSTooltip.db.char["data_source"]])
+    main_frame:SetStatusText(BisTooltip_Source_To_URL[BiSTooltip.db.char["data_source"]])
     drawDropdowns()
     createSpecFrame()
     drawSpecData()

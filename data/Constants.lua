@@ -1,5 +1,9 @@
 BisTooltip_Phases = { "Phase 1" }
 
+BisTooltip_Source_To_URL = {
+    ["wh"] = "https://www.wowhead.com/classic",
+}
+
 BisTooltip_Class_Indexes = {
     ["Druid"] = 1,
     ["Hunter"] = 2,
@@ -106,3 +110,4 @@ BisTooltip_Classes = {
         [2] = "Tank",
     } },
 }
+

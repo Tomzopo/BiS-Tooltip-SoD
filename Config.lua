@@ -9,9 +9,7 @@ local sources = {
     wh = "wh",
 }
 
-Bistooltip_source_to_url = {
-    ["wh"] = "https://www.wowhead.com/classic",
-}
+
 
 local db_defaults = {
     char = {
@@ -82,7 +80,7 @@ local configTable = {
             type = "select",
             style = "dropdown",
             width = "double",
-            values = Bistooltip_source_to_url,
+            values = BisTooltip_Source_To_URL,
             set = function(info, key, val)
                 BiSTooltip.db.char.data_source = key
                 BiSTooltip:changeSpec(key)
@@ -197,7 +195,7 @@ local function openSourceSelectDialog()
         BiSTooltip:changeSpec(key)
     end)
     sourceDropdown:SetRelativeWidth(1)
-    sourceDropdown:SetList(Bistooltip_source_to_url)
+    sourceDropdown:SetList(BisTooltip_Source_To_URL)
     sourceDropdown:SetValue(BiSTooltip.db.char["data_source"])
     frame:AddChild(sourceDropdown)
 end
