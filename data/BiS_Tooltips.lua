@@ -1,4 +1,6 @@
 Bistooltip_wh_items = {};
+--TODO
+
 --[[
 Bistooltip_wh_items[48164] = { [1] = { ["class_name"] = "Druid", ["spec_name"] = "RDPS", ["slots"] = { [1] = { ["name"] = "Head", ["ranks"] = "1 / 2 / -" } } } }
 Bistooltip_wh_items[48171] = { [1] = { ["class_name"] = "Druid", ["spec_name"] = "RDPS", ["slots"] = { [1] = { ["name"] = "Head", ["ranks"] = "- / 1 / 4" } } } }
