@@ -1,4 +1,4 @@
-BisLists_Warlock = {
+Bis_Lists_Warlock = {
     ["Dps"] = {
         ["Phase 1"] = {
             [1] = { ["slot_name"] = "Head", ["enhs"] = { }, [1] = 211842, [2] = 209683, [3] = 3556, [4] = 4373, [5] = 4385, [6] = 211500 },

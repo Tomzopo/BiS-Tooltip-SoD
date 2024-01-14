@@ -46,7 +46,7 @@ local function printSpecLine(tooltip, slot, class_name, spec_name)
     if BiSTooltip.db.char.filter_class_names then
         prefix = ""
     end
-    local left_text = prefix .. "|T" .. Bistooltip_spec_icons[class_name][spec_name] .. ":14|t " .. spec_name
+    local left_text = prefix .. "|T" .. Spec_Icons[class_name][spec_name] .. ":14|t " .. spec_name
     if (slot_name == "Off hand" or slot_name == "Weapon" or slot_name == "Weapon 1h" or slot_name == "Weapon 2h") then
         left_text = left_text .. " (" .. slot_name .. ")"
     end

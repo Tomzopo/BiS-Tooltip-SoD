@@ -1,13 +1,13 @@
-BisTooltip_BisLists = {
-    ["Druid"] = BisLists_Druid,
-    ["Hunter"] = BisLists_Hunter,
-    ["Mage"] = BisLists_Mage,
-    ["Paladin"] = BisLists_Paladin,
-    ["Priest"] = BisLists_Priest,
-    ["Rogue"] = BisLists_Rogue,
-    ["Shaman"] = BisLists_Shaman,
-    ["Warlock"] = BisLists_Warlock,
-    ["Warrior"] = BisLists_Warrior,
+BisTooltip_Bis_Lists = {
+    ["Druid"] = Bis_Lists_Druid,
+    ["Hunter"] = Bis_Lists_Hunter,
+    ["Mage"] = Bis_Lists_Mage,
+    ["Paladin"] = Bis_Lists_Paladin,
+    ["Priest"] = Bis_Lists_Priest,
+    ["Rogue"] = Bis_Lists_Rogue,
+    ["Shaman"] = Bis_Lists_Shaman,
+    ["Warlock"] = Bis_Lists_Warlock,
+    ["Warrior"] = Bis_Lists_Warrior,
 }
 
 BisTooltip_Classes = {
@@ -53,4 +53,3 @@ BisTooltip_Classes = {
     } },
 }
 
-Bistooltip_wh_phases = { "Phase 1" }

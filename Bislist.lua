@@ -216,7 +216,7 @@ end
 local function buildClassDict()
     class_options = {}
     for ci, class in ipairs(Bistooltip_classes) do
-        local option_name = "|T" .. Bistooltip_spec_icons[class.name].classIcon .. ":14|t " .. class.name
+        local option_name = "|T" .. Spec_Icons[class.name].ClassIcon.. ":14|t " .. class.name
         table.insert(class_options, option_name)
         class_options_to_class[option_name] = { name = class.name, i = ci }
     end
@@ -226,7 +226,7 @@ local function buildSpecsDict(class_i)
     spec_options = {}
     spec_options_to_spec = {}
     for si, spec in ipairs(Bistooltip_classes[class_i].specs) do
-        local option_name = "|T" .. Bistooltip_spec_icons[class][spec] .. ":14|t " .. spec
+        local option_name = "|T" .. Spec_Icons[class][spec] .. ":14|t " .. spec
         table.insert(spec_options, option_name)
         spec_options_to_spec[option_name] = spec
     end

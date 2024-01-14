@@ -1,4 +1,4 @@
-BisLists_Druid = {
+Bis_Lists_Druid = {
     ["Balance Dps"] = {
         ["Phase 1"] = {
             [1] = { ["slot_name"] = "Head", ["enhs"] = { }, [1] = 211507, [2] = 211842, [3] = 4373, [4] = -1, [5] = -1, [6] = -1 },

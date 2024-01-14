@@ -1,4 +1,4 @@
-BisLists_Warrior = {
+Bis_Lists_Warrior = {
     ["Dps"] = {
         ["Phase 1"] = {
             [1] = { ["slot_name"] = "Head", ["enhs"] = { }, [1] = 211505, [2] = 1282, [3] = 7130, [4] = -1, [5] = -1, [6] = -1 },
