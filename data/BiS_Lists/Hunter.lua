@@ -1,4 +1,4 @@
-Bis_Lists_Hunter = {
+BiS_Lists_Hunter = {
     ["Dps"] = {
         ["Phase 1"] = {
             [1] = { ["slot_name"] = "Head", ["enhs"] = { }, [1] = 211510, [2] = 211789, [3] = 4724, [4] = 4385, [5] = -1, [6] = -1 },

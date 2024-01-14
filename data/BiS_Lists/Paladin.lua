@@ -1,4 +1,4 @@
-Bis_Lists_Paladin = {
+BiS_Lists_Paladin = {
     ["Healer"] = {
         ["Phase 1"] = {
             [1] = { ["slot_name"] = "Head", ["enhs"] = { }, [1] = 211507, [2] = 211842, [3] = 209683, [4] = 4373, [5] = -1, [6] = -1 },

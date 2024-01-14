@@ -1,4 +1,4 @@
-Bis_Lists_Priest = {
+BiS_Lists_Priest = {
     ["Healer"] = {
         ["Phase 1"] = {
             [1] = { ["slot_name"] = "Head", ["enhs"] = { }, [1] = 211842, [2] = 209683, [3] = 4373, [4] = 4368, [5] = 211500, [6] = -1 },

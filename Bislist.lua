@@ -44,7 +44,7 @@ local function createItemFrame(item_id, size, with_checkmark)
                 checkMark:SetWidth(32)
                 checkMark:SetHeight(32)
                 checkMark:SetPoint("CENTER", 6, -8)
-                checkMark:SetTexture("Interface\\AddOns\\BiS-Tooltip-SoD\\checkmark-16.tga")
+                checkMark:SetTexture("Interface\\AddOns\\BiS-Tooltip-SoD\\assets\\checkmark-16.tga")
                 table.insert(checkmarks, checkMark)
             end
 

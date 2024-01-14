@@ -1,4 +1,4 @@
-Bis_Lists_Shaman = {
+BiS_Lists_Shaman = {
     ["Elemental Dps"] = {
         ["Phase 1"] = {
             [1] = { ["slot_name"] = "Head", ["enhs"] = { }, [1] = 211842, [2] = 211507, [3] = 209683, [4] = -1, [5] = -1, [6] = -1 },
