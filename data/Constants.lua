@@ -100,6 +100,7 @@ BisTooltip_Classes = {
         [1] = "Elemental Dps",
         [2] = "Enhancement Dps",
         [3] = "Healer",
+        [4] = "Tank",
     } },
     [8] = { ["name"] = "Warlock", ["specs"] = {
         [1] = "Dps",
