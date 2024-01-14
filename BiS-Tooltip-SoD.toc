@@ -32,7 +32,7 @@ data\Warrior.lua
 
 BisTooltip_classes.lua
 BisTooltip_wh_items.lua
-BisTooltip_wh_bislists.lua
+BisTooltip_BisLists.lua
 BisTooltip_horde_to_ali.lua
 Core.lua
 Config.lua

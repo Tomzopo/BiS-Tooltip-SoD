@@ -235,9 +235,9 @@ function BiSTooltip:openConfigDialog()
 end
 
 local function enableSpec(spec_name)
-    Bistooltip_bislists = Bistooltip_wh_bislists;
+    Bistooltip_bislists = BisTooltip_BisLists;
     Bistooltip_items = Bistooltip_wh_items;
-    Bistooltip_classes = Bistooltip_wh_classes;
+    Bistooltip_classes = BisTooltip_Classes;
     Bistooltip_phases = Bistooltip_wh_phases;
     Bistooltip_phases_string = ""
     for i, phase in ipairs(Bistooltip_phases) do
