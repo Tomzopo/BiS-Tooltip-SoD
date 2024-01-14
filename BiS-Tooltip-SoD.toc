@@ -4,7 +4,7 @@
 ## Author: Hellixoid
 ## Author: Dweem
 ## Author: Tomzopo	
-## Version: 1.0.3
+## Version: 1.0.4
 ## SavedVariables: BisTooltipDB
 ## OptionalDeps:
 
