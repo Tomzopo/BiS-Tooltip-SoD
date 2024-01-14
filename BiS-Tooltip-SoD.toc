@@ -1,5 +1,5 @@
 ## Interface: 11500
-## Title: BiSTooltip-SoD
+## Title: BiS-Tooltip-SoD
 ## Notes: v1.0.2 In game BiS lists.
 ## Author: Hellixoid
 ## Author: Dweem
