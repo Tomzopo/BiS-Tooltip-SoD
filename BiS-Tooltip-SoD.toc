@@ -1,10 +1,10 @@
 ## Interface: 11500
 ## Title: BiS-Tooltip-SoD
-## Notes: v1.0.5 In game BiS lists.
+## Notes: v1.0.6 In game BiS lists.
 ## Author: Hellixoid
 ## Author: Dweem
 ## Author: Tomzopo	
-## Version: 1.0.5
+## Version: 1.0.6
 ## SavedVariables: BisTooltipDB
 ## OptionalDeps:
 
