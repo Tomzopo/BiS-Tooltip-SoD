@@ -1,4 +1,4 @@
-BisTooltip_Phases = { "Phase 1" }
+BisTooltip_Phases = { "BiS" }
 
 BisTooltip_Source_To_URL = {
     ["wh"] = "https://www.wowhead.com/classic",
