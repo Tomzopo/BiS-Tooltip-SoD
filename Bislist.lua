@@ -87,10 +87,8 @@ local function createSpellFrame(spell_id, size)
         spells[spell_id]:ContinueOnSpellLoad(function()
             local name, rank, icon, castTime, minRange, maxRange = GetSpellInfo(spell_id)
             spell_frame:SetImage(icon)
-            local link = GetSpellLink(spell_id)
-            if link == nil then
-                link = "\124cffffd000\124Hspell:" .. spell_id .. "\124h[" .. name .. "]\124h\124r"
-            end
+            --local link = GetSpellLink(spell_id)
+            local link = "\124cffffffff\124Henchant:" .. spell_id .. "\124h[" .. name .. "]\124h\124r"
             spell_frame:SetCallback("OnClick", function(button)
                 SetItemRef(link, link, "LeftButton");
             end)
