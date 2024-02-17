@@ -365,9 +365,9 @@ function BiSTooltip:createMainFrame()
         return
     end
     main_frame = AceGUI:Create("Frame")
-    main_frame:SetWidth(550)
-    main_frame:SetHeight(600)
-    main_frame.frame:SetResizeBounds(550, 600)
+    main_frame:SetWidth(500)
+    main_frame:SetHeight(550)
+    main_frame.frame:SetResizeBounds(500, 550)
 
     --main_frame.frame:SetScript("OnKeyDown", function(self, key)
     --    if key == "ESCAPE" then
