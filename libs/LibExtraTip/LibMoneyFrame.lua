@@ -33,7 +33,7 @@ local LIBSTRING = LIBNAME.."_"..VERSION_MAJOR.."_"..VERSION_MINOR
 local lib = LibStub:NewLibrary(LIBNAME.."-"..VERSION_MAJOR, VERSION_MINOR)
 if not lib then return end
 
-LibStub("LibRevision"):Set("$URL$","$Rev$","5.12.DEV.", 'auctioneer', 'libs')
+LibStub("LibRevision"):Set("$URL: Auc-Advanced/Libs/LibExtraTip/LibMoneyFrame.lua $","$Rev: 6340 $","5.12.DEV.", 'auctioneer', 'libs')
 
 -- Call function to deactivate any outdated version of the library.
 -- (calls the OLD version of this function, NOT the one defined in this
@@ -43,116 +43,61 @@ if lib.Deactivate then lib:Deactivate() end
 local methods = {}
 local numMoneys = 0
 
-local function setColorBlindCoins(frame)
-    frame.copper.texture:Hide()
-    frame.silver.texture:Hide()
-    frame.gold.texture:Hide()
-
-    frame.gold.altText:Show()
-    frame.silver.altText:Show()
-    frame.copper.altText:Show()
-end
-
-local function setNormalCoins(frame)
-    frame.copper.texture:Show()
-    frame.silver.texture:Show()
-    frame.gold.texture:Show()
-
-    frame.gold.altText:Hide()
-    frame.silver.altText:Hide()
-    frame.copper.altText:Hide()
-end
-
-local function createCoin(frame, pos, width, height, parentFrame)
+local function createCoin(frame, pos, width, height)
 	if not width then width = 200 end
 	if not height then height = 16 end
 	frame:SetWidth(width)
 	frame:SetHeight(height)
-
 	frame.label = frame:CreateFontString()
 	frame.label:SetFontObject(GameTooltipTextSmall)
 	local font = frame.label:GetFont()
 	frame.label:SetHeight(height)
-	frame.label:SetWidth(width-height)  -- height * 1.8?  This doesn't make sense.
+	frame.label:SetWidth(width-height)
 	frame.label:SetFont(font, height)
 	frame.label:SetPoint("TOPLEFT", frame, "TOPLEFT", 0,0)
 	frame.label:SetJustifyH("RIGHT")
 	frame.label:SetJustifyV("CENTER")
 	frame.label:Show()
-
 	frame.texture = frame:CreateTexture()
 	frame.texture:SetWidth(height)
 	frame.texture:SetHeight(height)
 	frame.texture:SetPoint("TOPLEFT", frame.label, "TOPRIGHT", 2,0)
 	frame.texture:SetPoint("BOTTOM", frame.label, "BOTTOM", 0,0)
-    frame.texture:SetTexture("Interface\\MoneyFrame\\UI-MoneyIcons")
-    frame.texture:SetTexCoord(pos,pos+0.25, 0,1)
-
-    -- alt coin text overlaps the icon
-    frame.altText = frame:CreateFontString()
-	frame.altText:SetFontObject(GameTooltipTextSmall)
-	frame.altText:SetWidth(height)
-	frame.altText:SetHeight(height)
-	frame.altText:SetFont(font, height)
-	frame.altText:SetPoint("TOPLEFT", frame.label, "TOPRIGHT", 2,0)
-	frame.altText:SetPoint("BOTTOM", frame.label, "BOTTOM", 0,0)
-	frame.altText:SetJustifyH("LEFT")
-	frame.altText:SetJustifyV("CENTER")
-    frame.altText:SetText(GOLD_AMOUNT_SYMBOL)   -- so it has something to measure
-
-    if parentFrame.colorBlind then
-        frame.texture:Hide()
-        frame.altText:Show()
-    else
-        frame.texture:Show()
-        frame.altText:Hide()
-    end
+	frame.texture:SetTexture("Interface\\MoneyFrame\\UI-MoneyIcons")
+	frame.texture:SetTexCoord(pos,pos+0.25, 0,1)
+	frame.texture:Show()
 end
 
--- onUpdate, needs a name change
 local function refresh(self)
-    local colorBlindEnabled = GetCVar("colorblindMode") == "1"
-    if  self.colorBlind ~= colorBlindEnabled then
-        self.colorBlind = colorBlindEnabled
-        if colorBlindEnabled then
-            setColorBlindCoins(self)
-        else
-            setNormalCoins(self)
-        end
-    end
-
-    local oldNeedsRefresh = self.needsRefresh
-    self.needsRefresh = false
-    if oldNeedsRefresh then
-	    self:UpdateWidth()
-    end
+	self:NeedsRefresh(false)
+	self:UpdateWidth()
 end
 
 function methods:UpdateWidth()
 	local curWidth = ceil(self:GetWidth())
 	local width = 0
-
 	if self.gold:IsShown() then
 		width = self.gold.label:GetStringWidth()
 		self.gold.label:SetWidth(width)
 		width = width + self.gold.texture:GetWidth() + 2 -- Add 2 for the uncounted right side buffer
 		self.gold:SetWidth(width)
 	end
-
 	if self.silver:IsShown() then
 		width = width + self.silver:GetWidth() -- self.silver already has a right side buffer
 	end
-
 	width = width + self.copper:GetWidth() + 2 -- Add 2 extra for a left side buffer
 
 	width = ceil(width)
-	if curWidth ~= width then self.needsRefresh = true end
+	if curWidth ~= width then self:NeedsRefresh(true) end
 	self:RealSetWidth(width)
+
 end
 
 function methods:NeedsRefresh(flag)
 	if flag then
-        self.needsRefresh = true
+		self:SetScript("OnUpdate", refresh)
+	else
+		self:SetScript("OnUpdate", nil)
 	end
 end
 
@@ -172,9 +117,8 @@ function methods:SetValue(money, red,green,blue)
 		-- string and return a bogus width when we try and get the string length.
 		self.gold.label:SetFormattedText("%d", g)
 		self.gold.label:SetTextColor(red,green,blue)
-        self.gold.altText:SetTextColor(red,green,blue)
 		self.gold:Show()
-		self.needsRefresh = true
+		self:NeedsRefresh(true)
 	else
 		self.gold:Hide()
 	end
@@ -185,7 +129,6 @@ function methods:SetValue(money, red,green,blue)
 			self.silver.label:SetFormattedText("%d",  s)
 		end
 		self.silver.label:SetTextColor(red,green,blue)
-        self.silver.altText:SetTextColor(red,green,blue)
 		self.silver:Show()
 	else
 		self.silver:Hide()
@@ -197,7 +140,6 @@ function methods:SetValue(money, red,green,blue)
 		self.copper.label:SetFormattedText("%d", c)
 	end
 	self.copper.label:SetTextColor(red,green,blue)
-	self.copper.altText:SetTextColor(red,green,blue)
 	self.copper:Show()
 	self:UpdateWidth()
 
@@ -209,9 +151,6 @@ function methods:SetColor(red, green, blue)
 	self.copper.label:SetTextColor(red, green, blue)
 	self.silver.label:SetTextColor(red, green, blue)
 	self.gold.label:SetTextColor(red, green, blue)
-	self.copper.altText:SetTextColor(red,green,blue)
-	self.silver.altText:SetTextColor(red,green,blue)
-	self.gold.altText:SetTextColor(red,green,blue)
 end
 
 function methods:SetHeight()
@@ -243,26 +182,20 @@ function lib:new(height, red, green, blue)
 	o:SetWidth(width)
 	o:SetHeight(height)
 
-    o.colorBlind = GetCVar("colorblindMode") == "1"
-
 	o.width = width
 	o.height = height
 
 	o.copper = CreateFrame("Frame", name.."Copper", o)
 	o.copper:SetPoint("TOPRIGHT", o, "TOPRIGHT", 0,0)
-	createCoin(o.copper, 0.5, height*2.8,height, o)
+	createCoin(o.copper, 0.5, height*2.8,height)
 
 	o.silver = CreateFrame("Frame", name.."Silver", o)
 	o.silver:SetPoint("TOPRIGHT", o.copper, "TOPLEFT", 0,0)
-	createCoin(o.silver, 0.25, height*2.8,height, o)
+	createCoin(o.silver, 0.25, height*2.8,height)
 
 	o.gold = CreateFrame("Frame", name.."Gold", o)
 	o.gold:SetPoint("TOPRIGHT", o.silver, "TOPLEFT", 0,0)
-	createCoin(o.gold, 0, width-(height*2.8),height, o)
-
-    o.gold.altText:SetText(GOLD_AMOUNT_SYMBOL)
-    o.silver.altText:SetText(SILVER_AMOUNT_SYMBOL)
-    o.copper.altText:SetText(COPPER_AMOUNT_SYMBOL)
+	createCoin(o.gold, 0, width-(height*2.8),height)
 
 -- Debugging code to see the extents:
 --		o.texture = o:CreateTexture()
@@ -275,9 +208,6 @@ function lib:new(height, red, green, blue)
 		if o[method] then o["Real"..method] = o[method] end
 		o[method] = func
 	end
-
-    o.needsRefresh = true
-    o:SetScript("OnUpdate", refresh)
 
 	o:SetColor(red, green, blue)
 	o:Hide()
