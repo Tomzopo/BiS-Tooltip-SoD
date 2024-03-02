@@ -296,7 +296,7 @@ BiS_Lists_Warrior = {
                 [6] = -1
             },
             [15] = {
-              ["slot_name"] = "Shield", 
+              ["slot_name"] = "Shield",
               ["enhs"] = { }, 
               [1] = 213390,
               [2] = 7726,
