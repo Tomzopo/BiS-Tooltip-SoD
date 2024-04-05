@@ -1,4 +1,4 @@
-## Interface: 11501
+## Interface: 11502
 ## Title: BiS-Tooltip-SoD
 ## Notes: v1.2.0 In game BiS lists.
 ## Author: Hellixoid
