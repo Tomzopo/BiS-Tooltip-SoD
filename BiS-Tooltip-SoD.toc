@@ -1,10 +1,8 @@
 ## Interface: 11502
 ## Title: BiS-Tooltip-SoD
-## Notes: v1.2.0 In game BiS lists.
-## Author: Hellixoid
-## Author: Dweem
+## Notes: In game BiS lists.
 ## Author: Tomzopo	
-## Version: 1.2.0
+## Version: @project-version@ 
 ## SavedVariables: BisTooltipDB
 ## OptionalDeps:
 ## X-Curse-Project-ID: 961545
