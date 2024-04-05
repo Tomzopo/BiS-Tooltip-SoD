@@ -18,5 +18,5 @@ externals:
     libs/LibSharedMedia-3.0: https://repos.wowace.com/wow/libsharedmedia-3-0/trunk/LibSharedMedia-3.0
     libs/LibStub: https://repos.wowace.com/wow/libstub/tags/1.0
     libs/LibUIDropDownMenu: https://repos.wowace.com/wow/libuidropdownmenu/trunk/LibUIDropDownMenu
-    libs/LibWindow-1.1: https://repos.curseforge.com/wow/libwindow-1-1/trunk/LibWindow-1.1:w
+    libs/LibWindow-1.1: https://repos.curseforge.com/wow/libwindow-1-1/trunk/LibWindow-1.1
     
