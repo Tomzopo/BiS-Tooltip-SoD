@@ -7,6 +7,8 @@
 ## Version: 1.2.0
 ## SavedVariables: BisTooltipDB
 ## OptionalDeps:
+## X-Curse-Project-ID: 961545
+## X-Wago-ID: 56n9EAN9
 
 # Libs.
 libs\LibStub\LibStub.lua
