@@ -1,6 +1,17 @@
 BiS_Lists_Priest = {
     ["Healer"] = {
-        ["Phase 3"] = {},
+        ["Phase 3"] = {
+            [1] = {
+                ["slot_name"] = "To be implemented, waiting on Wowhead guide",
+                ["enhs"] = { },
+                [1] = -1,
+                [2] = -1,
+                [3] = -1,
+                [4] = -1,
+                [5] = -1,
+                [6] = -1
+            },
+        },
         ["Phase 2"] = {
             [1] = {
                 ["slot_name"] = "Head",
@@ -165,7 +176,18 @@ BiS_Lists_Priest = {
         },
     },
     ["Dps"] = {
-        ["Phase 3"] = {},
+        ["Phase 3"] = {
+            [1] = {
+                ["slot_name"] = "To be implemented, waiting on Wowhead guide",
+                ["enhs"] = { },
+                [1] = -1,
+                [2] = -1,
+                [3] = -1,
+                [4] = -1,
+                [5] = -1,
+                [6] = -1
+            },
+        },
         ["Phase 2"] = {
             [1] = {
                 ["slot_name"] = "Head",
