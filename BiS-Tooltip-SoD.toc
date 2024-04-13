@@ -25,15 +25,28 @@ data\Constants.lua
 data\HordeToAllianceItems.lua
 
 # BiS Lists.
-data\BiS_Lists\Druid.lua
-data\BiS_Lists\Hunter.lua
-data\BiS_Lists\Mage.lua
-data\BiS_Lists\Paladin.lua
-data\BiS_Lists\Priest.lua
-data\BiS_Lists\Rogue.lua
-data\BiS_Lists\Shaman.lua
-data\BiS_Lists\Warlock.lua
-data\BiS_Lists\Warrior.lua
+data\BiS_Lists\Druid_Balance.lua
+data\BiS_Lists\Druid_Feral.lua
+data\BiS_Lists\Druid_Tank.lua
+data\BiS_Lists\Druid_Healer.lua
+data\BiS_Lists\Hunter_DPS.lua
+data\BiS_Lists\Mage_DPS.lua
+data\BiS_Lists\Mage_Healer.lua
+data\BiS_Lists\Paladin_DPS.lua
+data\BiS_Lists\Paladin_Healer.lua
+data\BiS_Lists\Paladin_Tank.lua
+data\BiS_Lists\Priest_DPS.lua
+data\BiS_Lists\Priest_Healer.lua
+data\BiS_Lists\Rogue_DPS.lua
+data\BiS_Lists\Rogue_Tank.lua
+data\BiS_Lists\Shaman_Elemental.lua
+data\BiS_Lists\Shaman_Enhancement.lua
+data\BiS_Lists\Shaman_Healer.lua
+data\BiS_Lists\Shaman_Tank.lua
+data\BiS_Lists\Warlock_DPS.lua
+data\BiS_Lists\Warlock_Tank.lua
+data\BiS_Lists\Warrior_DPS.lua
+data\BiS_Lists\Warrior_Tank.lua
 data\BiS_Lists.lua
 
 # BiS Tooltips.
